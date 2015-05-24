@@ -1,0 +1,17 @@
+{
+  "name": "socketclient",
+  "version": "1.0.0",
+  "description": "for testing the socket server",
+  "main": "client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ajay @ RR Logic",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.12.4",
+    "dateformat": "^1.0.11",
+    "express": "^4.12.4",
+    "net": "^1.0.2"
+  }
+}
