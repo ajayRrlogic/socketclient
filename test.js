@@ -27,8 +27,13 @@ function getNMEALatLng(latLng)
   var decimal = latLng - degree;
   //convert the decimal to minutes
   decimal = decimal * 60;
+  var decString = decimal.toString();
+  if(decimal < 10) //single digit then add zero
+  {
+    decString = '0' + decString;
 
-  retString = degree.toString() + decimal.toString();
+  }
+  retString = degree.toString() + decString;
   console.log('lat before:'+latLng + 'after:'+retString);
   retString = retString.substr(0,9);//only 9 digits
   return retString;
