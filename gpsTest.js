@@ -15,7 +15,7 @@ var calculateNewPostionFromBearingDistance = function(lat, lng, bearing, speed,n
 var getRoute = function(numEvents,lat,lng,speed,timegap,angle)
 {
   var arrPath = [];
-  var latLong = [10,10];
+  var latLong = [];
   latLong[0] = lat;
   latLong[1] = lng;
   for(var i = 0;i<numEvents;i++)

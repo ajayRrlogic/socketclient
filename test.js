@@ -9,6 +9,8 @@ var net = require('net');
 var HOST = '127.0.0.1';
 var PORT = 5000;
 var timeout = 30000;
+var prompt1 = require('prompt');
+
 
 
 
@@ -96,16 +98,75 @@ function timerCallBack()
 
 }
 
+
+function getUserInputs(callback)
+{
+  var userInput = {};
+  //start lat
+  //direction
+  //speed
+
+  // Start the prompt
+  //
+  console.log('no validation done on lat long !!');
+  prompt1.start();
+
+
+
+
+  //
+  // Get two properties from the user: username and email
+  //
+  prompt1.get(['start_latitude','start_longitude', 'direction','speed'], function (err, result) {
+    //
+    // Log the results.
+
+      if (err) {
+        console.log(err,null);
+        return ; }
+
+    //
+    console.log('Command-line input received:');
+    console.log('  start_latitude: ' + result.start_latitude);
+    console.log('  start_longitude: ' + result.start_longitude);
+    console.log('  angle: ' + result.direction);
+    console.log('  speed: ' + result.speed);
+    callback(null,result);
+  });
+
+
+}
+
+function userDataCallback(err,result)
+{
+  if(err)
+  {
+    console.log('error in user inputs');
+  }
+  else {
+    {
+      arrayOfRoutes = gpsTest.getRoute(100,result.start_latitude,result.start_longitude,result.speed,0.007,result.direction);
+
+      //for(var i =0;i<arrayOfRoutes.length;i++)
+      {
+        setTimeout(timerCallBack,1000);
+      }
+    }
+  }
+}
+
 testClient.prototype.sendTestRequests = function()
 {
   //get all the routes
-  arrayOfRoutes = gpsTest.getRoute(10,12.957251,77.701163,60,0.1,300);
+  getUserInputs(userDataCallback);
+  /*
+  arrayOfRoutes = gpsTest.getRoute(100,14.957251,77.701163,60,0.1,300);
 
   //for(var i =0;i<arrayOfRoutes.length;i++)
   {
     setTimeout(timerCallBack,1000);
   }
-
+*/
 };
 
 
